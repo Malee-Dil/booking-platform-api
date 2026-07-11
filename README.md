@@ -159,3 +159,10 @@ src/
  ├── app.module.ts
  └── main.ts
 ```
+
+## Live Demo
+
+- **API base URL:** https://booking-platform-api-v3vl.onrender.com
+- **Swagger docs:** https://booking-platform-api-v3vl.onrender.com/api/docs
+
+> Note: hosted on Render's free tier — the service spins down after 15 minutes of inactivity, so the first request may take 30–50 seconds to wake up.
