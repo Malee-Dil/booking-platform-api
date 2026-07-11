@@ -54,6 +54,8 @@ This API supports two user types:
 
 Schema is managed entirely through TypeORM migrations — `synchronize` is disabled to avoid unreviewed, automatic schema changes.
 
+> **Note:** when `NODE_ENV=production`, the app connects to PostgreSQL with SSL enabled (`rejectUnauthorized: false`), since managed providers like Render require it. Locally (`NODE_ENV=development`), SSL is disabled to match a standard local Postgres install.
+
 ## Running Migrations
 
 ```bash
@@ -61,6 +63,10 @@ npm run migration:run     # apply all pending migrations
 npm run migration:revert  # roll back the last migration
 npm run migration:generate -- src/database/migrations/<Name>  # generate a new one after entity changes
 ```
+
+### Applying Migrations to a Deployed Database
+
+Render's free tier doesn't provide a persistent shell with the full dev toolchain, so migrations against the live database were run from a local machine, temporarily pointed at the live database's external connection string via `.env`, then reverted back to local values afterward. This is a one-time/as-needed operation, not part of the normal deploy flow.
 
 ## Running the Application
 
